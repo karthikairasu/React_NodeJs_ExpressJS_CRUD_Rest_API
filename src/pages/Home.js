@@ -7,18 +7,11 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // getUsers();
-    userList();
+    getUsers();
 }, []);
 
-// const getUsers = async () => {
-//   const response = await axois.get("http://localhost:5000/users");
-//   if (response.status === 200){
-//     setData(response.data);
-//   }
-// };
-const userList = async () => {
-  const response = await axois.get("http://localhost:5000/userlist");
+const getUsers = async () => {
+  const response = await axois.get("http://localhost:5000/users");
   if (response.status === 200){
     setData(response.data);
   }
@@ -29,7 +22,7 @@ const onDeleteUser = async (id) => {
     const response = await axois.delete(`http://localhost:5000/user/${id}`);
     if(response.status === 200){
       toast.success(response.data);
-      // getUsers();
+      getUsers();
     }
   }
 }

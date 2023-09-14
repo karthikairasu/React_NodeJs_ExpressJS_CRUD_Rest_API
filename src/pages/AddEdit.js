@@ -35,12 +35,12 @@ const AddEdit = () => {
     }
   };
 
-  // const addUser = async (data) => {
-  //   const response = await axios.post("http://localhost:5000/user", data);
-  //   if(response.status === 200){
-  //     toast.success(response.data);
-  //   }
-  // };
+  const addUser = async (data) => {
+    const response = await axios.post("http://localhost:5000/user", data);
+    if(response.status === 200){
+      toast.success(response.data);
+    }
+  };
 
   const updateUser = async (data, id) => {
     const response = await axios.put(`http://localhost:5000/user/${id}`, data);
@@ -49,21 +49,13 @@ const AddEdit = () => {
     }
   }
 
-  const registerUser = async (data) => {
-    const response = await axios.post("http://localhost:5000/register", data);
-    if(response.status === 200){
-      toast.success(response.data);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if(!name || !email || !contact){
       toast.error("Please provide value into each input field");
     }else{
         if(!id){
-          // addUser(state);
-          registerUser(state);
+          addUser(state);
         }else{
           updateUser(state, id)
         }
